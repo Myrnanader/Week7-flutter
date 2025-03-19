@@ -22,7 +22,19 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           leading: Padding(
             padding: const EdgeInsets.only(left: 10),
-            child: Container(
+            child: CircleAvatar(
+              backgroundColor: const Color.fromARGB(255, 1, 1, 1),
+              radius: 22,
+              child: CircleAvatar(
+                backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                child: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  iconSize: 25,
+                  onPressed: () {},
+                ),
+              ),
+            ),
+            /*Container(
               width: 30,
               height: 30,
               decoration: BoxDecoration(
@@ -36,7 +48,7 @@ class _MyAppState extends State<MyApp> {
                   padding: EdgeInsets.zero,
                 ),
               ),
-            ),
+            ),*/
           ),
           centerTitle: true,
           title: const Text("Details"),
@@ -84,23 +96,25 @@ class _MyAppState extends State<MyApp> {
               ),
               const SizedBox(height: 8),
               Text(
-                "Loren ipsum dolor sit amet, consectetur adipiscing elit, "
-                "sed eiusnod tenpor incidunt ut labore et dolore magna aliqua."
-                "Ut enin ad ninin venian, quis nostrun exercitation ulloan corporis suscipit laboriosan, nisi ut aliquid ex ea connodi consequatur",
-                style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                "Loren ipsum dolor sit amet, consectetur adipiscing elit, sed eiusnod tenpor incidunt ut labore et dolore magna aliqua.Ut enin ad ninin venian, quis nostrun exercitation ulloan corporis suscipit laboriosan, nisi ut aliquid ex ea connodi consequatur",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: const Color.fromARGB(255, 25, 25, 25),
+                ),
                 textAlign: TextAlign.justify,
               ),
               const SizedBox(height: 8),
+              
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
                       for (var color in [
-                        Colors.blue,
-                        Colors.red,
-                        Colors.green,
-                        Colors.yellow,
+                        const Color.fromARGB(255, 20, 91, 149),
+                        const Color.fromARGB(255, 165, 44, 35),
+                        const Color.fromARGB(255, 56, 131, 59),
+                        const Color.fromARGB(255, 202, 187, 48),
                       ])
                         Container(
                           decoration: BoxDecoration(
@@ -108,56 +122,60 @@ class _MyAppState extends State<MyApp> {
                             shape: BoxShape.circle,
                             border: Border.all(color: Colors.white, width: 2),
                           ),
-                          width: 35,
-                          height: 35,
-                          margin: const EdgeInsets.symmetric(horizontal: 5),
+                          width: 45,
+                          height: 45,
+                          // margin: const EdgeInsets.symmetric(horizontal: 1),
                         ),
                     ],
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      border: Border.all(width: 1),
-                    ),
-                    //padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-                    margin: EdgeInsets.only(left: 0),
-                    height: 40,
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(width: 1),
+                      ),
+                      //padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                      margin: EdgeInsets.only(left: 0),
+                      height: 50,
 
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              i++;
-                            });
-                          },
-                          icon: Icon(Icons.add, size: 20),
-                          padding: EdgeInsets.zero,
-                        ),
-                        Text(
-                          "$i",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            if (i >= 1) {
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            onPressed: () {
                               setState(() {
-                                i--;
+                                i++;
                               });
-                            }
-                          },
-                          icon: Icon(Icons.remove, size: 20),
-                          padding: EdgeInsets.zero,
-                        ),
-                      ],
+                            },
+                            icon: Icon(Icons.add, size: 25),
+
+                            // padding: EdgeInsets.zero,
+                          ),
+                          Text(
+                            "$i",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              if (i >= 1) {
+                                setState(() {
+                                  i--;
+                                });
+                              }
+                            },
+                            icon: Icon(Icons.remove, size: 25),
+                            padding: EdgeInsets.zero,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
+              
               const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -188,7 +206,7 @@ class _MyAppState extends State<MyApp> {
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
+                        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
@@ -200,7 +218,7 @@ class _MyAppState extends State<MyApp> {
                       onPressed: () {},
                       child: const Text(
                         "Add to cart",
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                        style: TextStyle(fontSize: 25, color: Colors.white),
                       ),
                     ),
                   ),
