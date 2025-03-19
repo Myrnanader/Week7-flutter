@@ -13,7 +13,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int i = 1; // Default value for counter
-
+  bool isFavoriteAppBar = false;
+  bool isFavoriteContainer = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,7 +25,7 @@ class _MyAppState extends State<MyApp> {
             padding: const EdgeInsets.only(left: 10),
             child: CircleAvatar(
               backgroundColor: const Color.fromARGB(255, 1, 1, 1),
-              radius: 22,
+              radius: 20,
               child: CircleAvatar(
                 backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                 child: IconButton(
@@ -59,10 +60,16 @@ class _MyAppState extends State<MyApp> {
           ),
           actions: [
             IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.favorite),
-              color: const Color.fromARGB(255, 141, 38, 31),
-              iconSize: 40,
+              onPressed: () {
+                setState(() {
+                  isFavoriteAppBar = !isFavoriteAppBar;
+                });
+              },
+              icon: Icon(
+                isFavoriteAppBar ? Icons.favorite : Icons.favorite_border,
+                color: const Color.fromARGB(255, 154, 42, 34),
+                size: 50,
+              ),
             ),
           ],
         ),
@@ -104,7 +111,7 @@ class _MyAppState extends State<MyApp> {
                 textAlign: TextAlign.justify,
               ),
               const SizedBox(height: 8),
-              
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -175,7 +182,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ],
               ),
-              
+
               const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -187,18 +194,24 @@ class _MyAppState extends State<MyApp> {
                       border: Border.all(),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color.fromARGB(255, 215, 213, 213),
+                          color: Colors.grey.shade300,
                           spreadRadius: 2,
                           blurRadius: 5,
                         ),
                       ],
                     ),
                     child: IconButton(
-                      onPressed: () {},
-                      iconSize: 30,
-                      icon: const Icon(
-                        Icons.favorite_border,
-                        color: Color.fromARGB(255, 121, 24, 17),
+                      onPressed: () {
+                        setState(() {
+                          isFavoriteContainer = !isFavoriteContainer;
+                        });
+                      },
+                      iconSize: 40,
+                      icon: Icon(
+                        isFavoriteContainer
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: const Color.fromARGB(255, 153, 44, 36),
                       ),
                     ),
                   ),
